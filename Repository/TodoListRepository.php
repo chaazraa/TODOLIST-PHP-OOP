@@ -14,7 +14,7 @@ namespace Repository {
             $number = sizeof($this->todoList) + 1;
             $this->todoList[$number] = $todoList;
         }
-        function remove(int $nunber): bool
+        function remove(int $number): bool
         {
             if ($number > sizeof($this->TodoList)) {
                 return false;
