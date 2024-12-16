@@ -25,7 +25,7 @@ namespace Repository {
             unset($this->todoList[sizeof($this->todoList)]);
             return true;
         }
-        function findAll): array
+        function findAll(): array
         {
             return $this->todoList;
         }
