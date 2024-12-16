@@ -25,7 +25,7 @@
                 echo "2. Hapus Todo" . PHP_EOL;
                 echo "x. Keluar" . PHP_EOL;
 
-                $ppilihan =InputHelper::inout("Pilih");
+                $pilihan =InputHelper::input("Pilih");
 
                 if ($pilihan == "1") {
                     $this->addTodoList();
