@@ -2,23 +2,23 @@
 
  namespace View {
 
-    use Service\TodoListService;
-    use Helper\TodoListHelper;
+    use Service\TodolistService;
+    use Helper\InputHelper;
 
-    class TodoListView
+    class TodolistView
     {
 
-        private TodoListService $todoListService;
+        private TodolistService $todolistService;
 
-        public function __construct(TodoListService $todoListService)
+        public function __construct(TodolistService $todolistService)
         {
-            $this->todoListService = $todoListService;
+            $this->todolistService = $todolistService;
         }
 
         function showTodoList(): void
         {
             while (true) {
-                $this->todoListService->showTodoList();
+                $this->todolistService->showTodoList();
 
                 echo "MENU" . PHP_EOL;
                 echo "1. Tambah Todo" . PHP_EOL;
@@ -47,10 +47,10 @@
 
             $todo = InputHelper::input("Todo (x untuk batal");
 
-            if ($tidi == "x") {
+            if ($todo == "x") {
                 echo "Batal menambah todo" . PHP_EOL;
             } else {
-                $this->todoListService->addTodoList($todo);
+                $this->todolistService->addTodoList($todo);
             }
         } 
 
@@ -63,7 +63,7 @@
             if ($pilihan == "x") {
                 echo "Batal menghapus todo" . PHP_EOL;
             } else {
-                $this->TodoListService->removeTodoList($pilihan);
+                $this->todolistService->removeTodoList($pilihan);
             }
         }
 

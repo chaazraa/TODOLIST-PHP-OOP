@@ -1,35 +1,35 @@
 <?php
 namespace Service {
-    use Entity\TodoList;
-    use Reposity\TodoListRepository;
-    interface TodoListService {
-        function showTodoList(): void;
-        function addTodoList(string $todo): void;
-        function removeTodoList(int $number): void;
+    use Entity\Todolist;
+    use Repository\TodolistRepository;
+    interface TodolistService {
+        function showTodolist(): void;
+        function addTodolist(string $todo): void;
+        function removeTodolist(int $number): void;
     }
-    class TodoListServiceImpl implements TodoListService {
-        private TodoListRepository $todoListRepository;
-        public function __construct(TodoListRepository $todoListRepository) {
-            $this->todoListRepository = TodoListRepository;
+    class TodolistServiceImpl implements TodolistService {
+        private TodolistRepository $todolistRepository;
+        public function __construct(TodolistRepository $todolistRepository) {
+            $this->todolistRepository = $todolistRepository;
         }
-        function showTodoList(): void {
+        function showTodolist(): void {
             echo "TODOLIST" . PHP_EOL;
-            $todoList = $this->todoListRepository->findALL();
-            foreach ($todoList as $number => $value) {
+            $todolist = $this->todolistRepository->findAll();
+            foreach ($todolist as $number => $value) {
                 echo "$number. " . $value->getTodo() . PHP_EOL;
             }
         }
-        function addTodoList(string $todo): void {
-            $todoList = new TodoList($todo);
-            $this->todoListRepository->save($todoList);
+        function addTodolist(string $todo): void {
+            $todolist = new Todolist($todo);
+            $this->todolistRepository->save($todolist);
             echo "SUKSES MENAMBAH TODOLIST" . PHP_EOL;
         }
-        function removeTodoList(int $number): void {
-            if ($this->todoListRepository->remove($number)) {
+        function removeTodolist(int $number): void {
+            if ($this->todolistRepository->remove($number)) {
                 echo "SUKSES MENGHAPUS TODOLIST" . PHP_EOL;
             } else {
                 echo "GAGAL MENGHAPUS TODOLIST" . PHP_EOL;
             }
-        }
+        }    
     }
 }

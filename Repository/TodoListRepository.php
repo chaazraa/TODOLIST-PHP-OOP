@@ -1,33 +1,30 @@
 <?php
+
 namespace Repository {
-    use Entity\TodoList;
-    interface TodoListRepository
-    {
-        function save(TodoList $todoList): void;
+    use Entity\Todolist;
+    interface TodolistRepository {
+        function save(Todolist $todolist): void;
         function remove(int $number): bool;
         function findAll(): array;
     }
-    class TodoListRepositoryImpl implements TodoListRepository {
-        public array $todoList = array();
-        function save(TodoList $todoList): void
-        {
-            $number = sizeof($this->todoList) + 1;
-            $this->todoList[$number] = $todoList;
+    class TodolistRepositoryImpl implements TodolistRepository {
+        public array $todolist = array();
+        function save(Todolist $todolist): void {
+            $number = sizeof($this->todolist) + 1;
+            $this->todolist[$number] = $todolist;
         }
-        function remove(int $number): bool
-        {
-            if ($number > sizeof($this->TodoList)) {
+        function remove(int $number): bool {
+            if ($number > sizeof($this->todolist)) {
                 return false;
             }
-            for ($i = $number; $i < sizeof($this->todoList); $i++) {
-                $this->todoList[$i] = $this->todoList[$i + 1];
+            for ($i = $number; $i < sizeof($this->todolist); $i++) {
+                $this->todolist[$i] = $this->todolist[$i + 1];
             }
-            unset($this->todoList[sizeof($this->todoList)]);
+            unset($this->todolist[sizeof($this->todolist)]);
             return true;
         }
-        function findAll(): array
-        {
-            return $this->todoList;
+        function findAll(): array {
+            return $this->todolist;
         }
     }
 }
