@@ -5,7 +5,7 @@ namespace Repository {
     {
         function save(TodoList $todoList): void;
         function remove(int $number): bool;
-        function findALL(): array;
+        function findAll(): array;
     }
     class TodoListRepositoryImpl implements TodoListRepository {
         public array $todoList = array();
@@ -25,7 +25,7 @@ namespace Repository {
             unset($this->todoList[sizeof($this->todoList)]);
             return true;
         }
-        function findALL(): array
+        function findAll): array
         {
             return $this->todoList;
         }
